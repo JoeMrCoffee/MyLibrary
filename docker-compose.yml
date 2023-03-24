@@ -1,0 +1,35 @@
+version: '3'
+
+
+services:
+  mySQLlamp:
+    image: mysql:5.7
+    container_name: mySQL-lamp
+    volumes:
+      - ./LAMPcontained/mySQLdata:/var/lib/mysql:z
+    environment:
+     - MYSQL_ROOT_PASSWORD=my5QLpAssw0rd
+    ports:
+     - 3306:3306
+
+  websvrlamp:
+    build: ./LAMPcontained/
+    container_name: websvr-lamp
+    volumes:
+     - ./LAMPcontained/data:/var/www/html:z
+    ports:
+     - 8001:80
+    links:
+     - mySQL-lamp
+    depends_on:
+     - mySQL-lamp
+
+  phpmyadminlamp:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-lamp
+    environment:
+      - PMA_HOST=mySQLlamp
+      - MYSQL_ROOT_PASSWORD=my5QLpAssw0rd
+      - PMA_PORT=3306
+    ports:
+      - 8081:80

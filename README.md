@@ -23,7 +23,9 @@ The pop-up information about each book on the home page is the information in th
 ### Troubleshooting
 #### Bring up
 When getting started the initial bring up can be standard LAMP stack with the MySQL template/structure imported. PHPMyAdmin would provide a graphical way to create a database, and also import the structure to begin accepting data. Command line methods are fine as well. Something similar to below should work to get started.
+
 mysql -u [user] -p [database_name] < [filename].sql
+
 More reference: https://phoenixnap.com/kb/how-to-backup-restore-a-mysql-database
 
 #### Uploading images

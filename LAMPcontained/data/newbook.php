@@ -3,9 +3,13 @@ echo "<h3>Input Book Details</h3>";
 
 if(isset($_POST['updatebook'])){
 	$title = $_POST['title'];
+	if (str_contains($title,"'")) {
+		$title = str_replace("'","&apos;", $title);
+	}
 	$author = $_POST['author'];
 	$comment = $_POST['comment'];
 	$review = $_POST['review'];
+	$review = str_replace("<br><br>","\n", $review);
 	$rating = $_POST['rating'];
 	$genre = $_POST['genre'];
 	$cost = $_POST['cost'];

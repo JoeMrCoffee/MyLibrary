@@ -12,6 +12,10 @@ if($bookrslt = $mysqli->query($findbook)) {
 	while ($bookDetails = mysqli_fetch_assoc($bookrslt)){
 		$comment = $bookDetails['Comment'];
 		$review = $bookDetails['Review'];
+		if (str_contains($review,"'") {
+			$review = str_replace("'","&apos;", $review);
+		}
+		$review = str_replace("\n", "<br><br>", $review);
 		$rating = $bookDetails['Rating'];
 		$genre = $bookDetails['Tags'];
 		$cost = $bookDetails['Cost'];

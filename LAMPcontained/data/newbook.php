@@ -26,7 +26,7 @@ if(isset($_POST['updatebook'])){
 	else { echo "<p>Add an image for the book? &nbsp;&nbsp;<input type='file' name='image'></p>"; }
 	echo "<table width='100%' cellpadding='3px' border='0px'>
 		<tr><td><strong>Author: </strong><input type='text' name='author' value='$author'></td><td><strong>Genre: </strong><input type='text' name='genre' value='$genre'></td></tr>
-		<tr><td><strong>Date read: </strong><input type='text' name='dateread' value='$dateread'></td><td><strong>Rating: </strong><input type='text' name='rating' value='$rating'></td></tr>
+		<tr><td><strong>Date read: </strong><input type='date' name='dateread' value='$dateread'></td><td><strong>Rating: </strong><input type='text' name='rating' value='$rating'></td></tr>
 		<tr><td><strong>Book location: </strong><select type='text' name='booklocation' id='booklocation' onclick='numInput()' value='$booklocation'>
 			<option value='Shelf'>Shelf</option>
 			<option value='Ebook'>Ebook</option>
@@ -45,7 +45,7 @@ else {
 		<p>Add an image for the book? &nbsp;&nbsp;<input type='file' name='image'></p>
 		<table width='100%' cellpadding='3px' border='0px'>
 		<tr><td><strong>Author: </strong><input type='text' name='author'></td><td><strong>Genre: </strong><input type='text' name='genre' ></td></tr>
-		<tr><td><strong>Date read: </strong><input type='text' name='dateread'></td><td><strong>Rating: </strong><input type='text' name='rating'></td></tr>
+		<tr><td><strong>Date read: </strong><input type='date' name='dateread'></td><td><strong>Rating: </strong><input type='text' name='rating'></td></tr>
 		<tr><td><strong>Book location: </strong><select type='text' name='booklocation' id='booklocation' onclick='numInput()'>
 			<option value='Shelf'>Shelf</option>
 			<option value='Ebook' selected>Ebook</option>

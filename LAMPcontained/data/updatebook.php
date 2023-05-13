@@ -35,7 +35,7 @@ if(isset($_POST['update'])){
 
 }
 else {
-	$bookID = date(Ymd).rand(0,9);
+	$bookID = date('Ymd').rand(0,9);
 	if ($bookimage != null or $bookimage != '') {
 		$curdir = getcwd();
 		$savefile = $curdir."/images/".$bookimage;

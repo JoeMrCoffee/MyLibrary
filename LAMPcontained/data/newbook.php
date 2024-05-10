@@ -7,7 +7,7 @@ if(isset($_POST['updatebook'])){
 		$title = str_replace("'","&apos;", $title);
 	}
 	$author = $_POST['author'];
-	$comment = $_POST['comment'];
+	$comment = str_replace("<br />", "", $_POST['comment']);
 	$review = $_POST['review'];
 	$review = str_replace("<br />", "", $review);
 	$rating = $_POST['rating'];

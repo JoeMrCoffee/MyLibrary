@@ -5,7 +5,7 @@ if(isset($_POST['booksearch'])){
 	$searchquery = $_POST['booksearch'];
 	$libquery = "SELECT * FROM librarything_neurodrew WHERE Title LIKE '%$searchquery%' OR `Primary Author` LIKE '%$searchquery%'";
 }
-else { $libquery = "SELECT * FROM librarything_neurodrew"; }
+else { $libquery = "SELECT * FROM librarything_neurodrew ORDER BY `Date Read` DESC"; }
 
 
 //search bar

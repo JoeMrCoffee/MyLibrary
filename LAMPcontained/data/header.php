@@ -282,5 +282,6 @@ select {
 	<td class='titleimage' width='75px'><img src='MyLibrary_logo.png' height='45px'></td>
 	<td width='120px' class='title'><a href='mylibrary.php' class='titlelink'>HOME</a></td>
 	<td width='150px' class='title'><a href='newbook.php' class='titlelink'>NEW BOOK</a></td>
-	<td style='min-width: 70%;'></td><td></td>
+	<td width='150px' class='title'><a href='booklist.php' class='titlelink'>LIST VIEW</a></td>
+	<td style='min-width: 60%;'></td><td></td>
 </tr></table><br><br><br>

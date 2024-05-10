@@ -9,7 +9,7 @@ if(isset($_POST['updatebook'])){
 	$author = $_POST['author'];
 	$comment = $_POST['comment'];
 	$review = $_POST['review'];
-	$review = str_replace("<br><br>","\n", $review);
+	$review = str_replace("<br />", "", $review);
 	$rating = $_POST['rating'];
 	$genre = $_POST['genre'];
 	$cost = $_POST['cost'];
@@ -27,7 +27,8 @@ if(isset($_POST['updatebook'])){
 	echo "<table width='100%' cellpadding='3px' border='0px'>
 		<tr><td><strong>Author: </strong><input type='text' name='author' value='$author'></td><td><strong>Genre: </strong><input type='text' name='genre' value='$genre'></td></tr>
 		<tr><td><strong>Date read: </strong><input type='date' name='dateread' value='$dateread'></td><td><strong>Rating: </strong><input type='text' name='rating' value='$rating'></td></tr>
-		<tr><td><strong>Book location: </strong><select type='text' name='booklocation' id='booklocation' onclick='numInput()' value='$booklocation'>
+		<tr><td><strong>Book location: </strong><select type='text' name='booklocation' id='booklocation' onclick='numInput()'>
+			<option value='$booklocation'>$booklocation</option>
 			<option value='Shelf'>Shelf</option>
 			<option value='Ebook'>Ebook</option>
 			<option value='Donated'>Donated</option>

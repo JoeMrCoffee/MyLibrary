@@ -2,10 +2,11 @@
 	echo "<h3>Book Update</h3>";
 	$title = str_replace("'","&apos;", $_POST['title']);
 	$author = $_POST['author'];
-	$comment = $_POST['comment'];
+	$comment = nl2br($_POST['comment']);
 	$review = nl2br($_POST['review']);
-	if (str_contains($review,"'")) {
+	if (str_contains($review,"'") || str_contains($comment, "'")) {
 		$review = str_replace("'","&apos;", $review);
+		$comment = str_replace("'","&apos;", $comment);
 	}
 	$rating = $_POST['rating'];
 	$genre = $_POST['genre'];

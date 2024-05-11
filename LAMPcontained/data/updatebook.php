@@ -12,26 +12,32 @@
 	$genre = $_POST['genre'];
 	$cost = $_POST['cost'];
 	if ($cost == '' or $cost == null){ $cost = 0.00; } 
-	$tmpimage = $_FILES['image']['tmp_name']; //need to add this feature
-	$bookimage = basename($_FILES['image']['name']);
 	$dateread = $_POST['dateread'];
 	$booklocation = $_POST['booklocation'];
 	if ($booklocation == 'Shelf') {
 		$booklocation = $booklocation." ".$_POST['shelfnum'];
 
 	}
-
+	//Need to adjust the logic here in case there is an empty book value, or predefined
+	//ensure that it can be handled if the image already exists it isn't cleared.
+	$updatequery = "";
 	if(isset($_POST['update'])){
 		$bookID = $_POST['bookID'];
-		if ($bookimage != null or $bookimage != '') {
+		if (isset($_FILES['image'])) {
+			$tmpimage = $_FILES['image']['tmp_name']; //need to add this feature
+			$bookimage = basename($_FILES['image']['name']);
 			$curdir = getcwd();
 			$savefile = $curdir."/images/".$bookimage;
 			$bookimgname = "images/".$bookimage;
 			move_uploaded_file($tmpimage, $savefile) or die("Cannot move uploaded file to working directory");
+			
+			$updatequery = "UPDATE `librarything_neurodrew` SET Title='$title', `Primary Author`='$author', Comment='$comment', Review='$review', Tags='$genre', Cost='$cost', `Date Read`='$dateread', BookLocation='$booklocation', Rating='$rating', Image='$bookimgname' WHERE `Book ID` = '$bookID'";
 		}
-		else { $bookimgname = ''; }
+		else { 
+			$bookimgname = '';
+			$updatequery = "UPDATE `librarything_neurodrew` SET Title='$title', `Primary Author`='$author', Comment='$comment', Review='$review', Tags='$genre', Cost='$cost', `Date Read`='$dateread', BookLocation='$booklocation', Rating='$rating' WHERE `Book ID` = '$bookID'";
+		}
 		
-		$updatequery = "UPDATE `librarything_neurodrew` SET Title='$title', `Primary Author`='$author', Comment='$comment', Review='$review', Tags='$genre', Cost='$cost', `Date Read`='$dateread', BookLocation='$booklocation', Rating='$rating', Image='$bookimgname' WHERE `Book ID` = '$bookID'";
 		if($bookrslt = $mysqli->query($updatequery)){
 			echo "<div class='postlink' ><p>Book $title updated</p></div>";
 		}
@@ -40,7 +46,7 @@
 	}
 	else {
 		$bookID = date('Ymd').rand(0,9);
-		if ($bookimage != null or $bookimage != '') {
+		if ($_FILES['image']['tmp_name'] != null) {
 			$curdir = getcwd();
 			$savefile = $curdir."/images/".$bookimage;
 			$bookimgname = "images/".$bookimage;

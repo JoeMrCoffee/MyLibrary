@@ -269,6 +269,20 @@ select {
 	max-width: 10%;
 
 }
+.booksummary {
+	color: white;
+	background-color: #27b643;
+	text-align: center;
+	font-size: 14px;
+	border-radius: 5px;
+	padding: 10px;
+	position: fixed;
+	width: 8%;
+	top: 100px;
+	right: 10px;
+	z-index: 1;
+	
+}
 
 
 </style>

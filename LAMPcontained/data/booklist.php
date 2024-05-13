@@ -3,6 +3,7 @@
 $libquery = "SELECT * FROM librarything_neurodrew ORDER BY `Date Read` DESC";
 
 $costCnt = 0;
+$bookCnt = 0;
 echo "<table align='center' width='80%' class='postlink'>
 	<tr><th>Title</th><th>Author</th><th>Date Read</th><th>Rating</th><th>Cost</th><th>Details</th></tr>";
 if($books = $mysqli->query($libquery)) {
@@ -18,8 +19,10 @@ if($books = $mysqli->query($libquery)) {
 			<td>$title</td><td>$author</td><td>$dateread</td><td>$rating</td><td>$bookcost</td>
 			<td><input type='submit' value='View'></td></form></tr>";
 		$costCnt = $costCnt+$bookcost;
+		$bookCnt += 1;
 	}
 	echo "<tr><td colspan='5'><strong>Total cost/value</strong></td><td><strong>$ $costCnt</td><tr>";
+	echo "<div class='booksummary'>Book #: $bookCnt<br>Cost: $ $costCnt</div>";
 }
 else "<p>Error connection to the database</p>";
 

@@ -23,7 +23,7 @@
 	$updatequery = "";
 	if(isset($_POST['update'])){
 		$bookID = $_POST['bookID'];
-		if (isset($_FILES['image'])) {
+		if ($_FILES['image']['tmp_name'] != null) {
 			$tmpimage = $_FILES['image']['tmp_name']; //need to add this feature
 			$bookimage = basename($_FILES['image']['name']);
 			$curdir = getcwd();
@@ -46,7 +46,7 @@
 	}
 	else {
 		$bookID = date('Ymd').rand(0,9);
-		if (isset($_FILES['image'])) {
+		if ($_FILES['image']['tmp_name'] != null) {
 			$tmpimage = $_FILES['image']['tmp_name']; //need to add this feature
 			$bookimage = basename($_FILES['image']['name']);
 			$curdir = getcwd();

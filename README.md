@@ -21,12 +21,18 @@ The pop-up information about each book on the home page is the information in th
 
 
 ### Troubleshooting
-#### Bring up
+#### Bring up - original
 When getting started the initial bring up can be standard LAMP stack with the MySQL template/structure imported. PHPMyAdmin would provide a graphical way to create a database, and also import the structure to begin accepting data. Command line methods are fine as well. Something similar to below should work to get started.
 
 mysql -u [user] -p [database_name] < [filename].sql
 
 More reference: https://phoenixnap.com/kb/how-to-backup-restore-a-mysql-database
+
+#### Bring up - Update - 06/2025
+I didn't like the bring up method requiring the database to be created and imported manually and have updated the header.php file to automatically check if the table exists, and if NOT it will create the table. This was simple enough, but I first created this on a back up of data from another app hence the strange table name and skipping this step. 
+NOTE: If you are using this and try to update the code, it will create a new table as I changed the table name to simply "thelibrary" to make it simpler.
+
+Now everything should just start if you start the 'docker-compose up -d'.
 
 #### Uploading images
 The images folder in the repo needs to be set with the correct permissions to accept the image files. If created from the docker-compose file, enter the websvr-lamp instace by running "docker exec -it websvr-lamp bash" command. It should enter at the location /var/www/html/ directory. Simply then run 'chown www-data:www-data -R images/' to change the directory permission to the web server owner. This should resolve the issues. 

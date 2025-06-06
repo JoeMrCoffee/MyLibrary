@@ -21,7 +21,7 @@ if(isset($_POST['updatebook'])){
 	echo "<form method='post' action='updatebook.php' enctype='multipart/form-data'><div class='postlink'>
 		<h4><strong>Title: </strong>$title</h4><input type='hidden' name='title' value='$title'>";
 	if ($image != '') {
-		echo "<div style='text-align: center;'><img style='max-width: 400px; max-height: 400 px;' src='$image'></div>";
+		echo "<div style='text-align: center;'><img style='max-width: 300px; max-height: 300 px;' src='$image'></div>";
 	}
 	else { echo "<p>Add an image for the book? &nbsp;&nbsp;<input type='file' name='image'></p>"; }
 	echo "<table width='100%' cellpadding='3px' border='0px'>

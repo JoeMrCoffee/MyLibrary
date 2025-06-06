@@ -31,11 +31,11 @@
 			$bookimgname = "images/".$bookimage;
 			move_uploaded_file($tmpimage, $savefile) or die("Cannot move uploaded file to working directory");
 			
-			$updatequery = "UPDATE `librarything_neurodrew` SET Title='$title', `Primary Author`='$author', Comment='$comment', Review='$review', Tags='$genre', Cost='$cost', `Date Read`='$dateread', BookLocation='$booklocation', Rating='$rating', Image='$bookimgname' WHERE `Book ID` = '$bookID'";
+			$updatequery = "UPDATE `thelibrary` SET Title='$title', `Primary Author`='$author', Comment='$comment', Review='$review', Tags='$genre', Cost='$cost', `Date Read`='$dateread', BookLocation='$booklocation', Rating='$rating', Image='$bookimgname' WHERE `Book ID` = '$bookID'";
 		}
 		else { 
 			$bookimgname = '';
-			$updatequery = "UPDATE `librarything_neurodrew` SET Title='$title', `Primary Author`='$author', Comment='$comment', Review='$review', Tags='$genre', Cost='$cost', `Date Read`='$dateread', BookLocation='$booklocation', Rating='$rating' WHERE `Book ID` = '$bookID'";
+			$updatequery = "UPDATE `thelibrary` SET Title='$title', `Primary Author`='$author', Comment='$comment', Review='$review', Tags='$genre', Cost='$cost', `Date Read`='$dateread', BookLocation='$booklocation', Rating='$rating' WHERE `Book ID` = '$bookID'";
 		}
 		
 		if($bookrslt = $mysqli->query($updatequery)){
@@ -46,14 +46,16 @@
 	}
 	else {
 		$bookID = date('Ymd').rand(0,9);
-		if ($_FILES['image']['tmp_name'] != null) {
+		if (isset($_FILES['image'])) {
+			$tmpimage = $_FILES['image']['tmp_name']; //need to add this feature
+			$bookimage = basename($_FILES['image']['name']);
 			$curdir = getcwd();
 			$savefile = $curdir."/images/".$bookimage;
 			$bookimgname = "images/".$bookimage;
 			move_uploaded_file($tmpimage, $savefile) or die("Cannot move uploaded file to working directory");
 		}
 		else { $bookimgname = ''; }
-		$insertquery = "INSERT INTO `librarything_neurodrew`(`Book ID`, `Title`, `Image`, `Primary Author`, `Review`, `Rating`, `Comment`, `Date Read`, `Tags`, `Cost`, `BookLocation`) VALUES ('$bookID', '$title', '$bookimgname', '$author', '$review', '$rating', '$comment', '$dateread', '$genre', '$cost', '$booklocation')";
+		$insertquery = "INSERT INTO `thelibrary`(`Book ID`, `Title`, `Image`, `Primary Author`, `Review`, `Rating`, `Comment`, `Date Read`, `Tags`, `Cost`, `BookLocation`) VALUES ('$bookID', '$title', '$bookimgname', '$author', '$review', '$rating', '$comment', '$dateread', '$genre', '$cost', '$booklocation')";
 		if($bookrslt = $mysqli->query($insertquery)){
 			echo "<div class='postlink' ><p>Book $title added</p></div>";
 		}

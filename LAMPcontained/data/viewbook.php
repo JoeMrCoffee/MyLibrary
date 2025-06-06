@@ -3,7 +3,7 @@ echo "<h3>Book Details</h3>";
 
 $bookID = $_POST['bookID'];
 
-$findbook = "SELECT * FROM librarything_neurodrew WHERE `Book ID` = '$bookID'";
+$findbook = "SELECT * FROM thelibrary WHERE `Book ID` = '$bookID'";
 
 if($bookrslt = $mysqli->query($findbook)) {
 	while ($bookDetails = mysqli_fetch_assoc($bookrslt)){
@@ -35,7 +35,7 @@ if($bookrslt = $mysqli->query($findbook)) {
 		</form>
 		<h4><strong>Title: </strong>$title</h4>";
 	if (isset($image)) {
-		echo "<div style='text-align: center;'><img style='max-width: 200px; max-height: 300 px;' src='$image'></div>";
+		echo "<div style='text-align: center;'><img style='max-width: 300px; max-height: 300 px;' src='$image'></div>";
 	}
 	echo "<table width='100%' cellpadding='3px' border='0px'>
 		<tr><td><strong>Author: </strong>$author</td><td><strong>Genre: </strong>$genre</td></tr>

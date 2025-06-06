@@ -1,6 +1,6 @@
 <?php include 'header.php'; 
 
-$libquery = "SELECT * FROM librarything_neurodrew ORDER BY `Date Read` DESC";
+$libquery = "SELECT * FROM thelibrary ORDER BY `Date Read` DESC";
 
 $costCnt = 0;
 $bookCnt = 0;

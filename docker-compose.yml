@@ -9,6 +9,7 @@ services:
       - ./LAMPcontained/mySQLdata:/var/lib/mysql:z
     environment:
      - MYSQL_ROOT_PASSWORD=my5QLpAssw0rd
+     - MYSQL_DATABASE=mylibrary
     ports:
      - 3306:3306
 

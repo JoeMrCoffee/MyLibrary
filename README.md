@@ -34,6 +34,11 @@ NOTE: If you are using this and try to update the code, it will create a new tab
 
 Now everything should just start if you start the 'docker-compose up -d'.
 
+#### Errors in writing - error 13 permission denied
+This can happen if the data directory for the MySQL container is created with the wrong permissions. If the Docker host is running as root this seems to be more prevelant - tested as such in Alpine Linux - and some chown and chmod changes are needed to ensure that happens well. Personally I've not had an issue using a user directory bringing up the docker containers. 
+
+Ensure the directory is owned by the correct user, and ensure the database directory is writeable to users other than root - perhaps chmod 777 or otherwise bring up the containers using a non-root-owned directory.
+
 #### Uploading images
 The images folder in the repo needs to be set with the correct permissions to accept the image files. If created from the docker-compose file, enter the websvr-lamp instace by running "docker exec -it websvr-lamp bash" command. It should enter at the location /var/www/html/ directory. Simply then run 'chown www-data:www-data -R images/' to change the directory permission to the web server owner. This should resolve the issues. 
 

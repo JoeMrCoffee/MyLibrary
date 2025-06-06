@@ -4,7 +4,7 @@ version: '3'
 services:
   mySQLlamp:
     image: mysql:5.7
-    container_name: mySQL-lamp
+    container_name: mySQLlamp
     volumes:
       - ./LAMPcontained/mySQLdata:/var/lib/mysql:z
     environment:
@@ -20,9 +20,9 @@ services:
     ports:
      - 8001:80
     links:
-     - mySQL-lamp
+     - mySQLlamp
     depends_on:
-     - mySQL-lamp
+     - mySQLlamp
 
   phpmyadminlamp:
     image: phpmyadmin/phpmyadmin
